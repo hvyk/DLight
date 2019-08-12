@@ -38,5 +38,7 @@ class Order(models.Model):
 
     # Fields
     container = models.ForeignKey(Container, on_delete=models.PROTECT)
-    scoops = models.ManyToManyField(Flavour)
+    # Can't have duplicate Flavours with this simple implemntation - all scoops must be of
+    # a unique flavour
+    scoops = models.ManyToManyField(Flavour)  
 

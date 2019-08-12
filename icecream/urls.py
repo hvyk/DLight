@@ -10,6 +10,7 @@ from icecream import views
 # Wire up our API using automatic URL routing.
 # Additionally, we include login URLs for the browsable API.
 urlpatterns = [
+    # REST Resources
     path('flavours', views.FlavourList.as_view()),
     path('flavours/<int:pk>/', views.FlavourDetail.as_view()),
     path('containers', views.ContainerList.as_view()),

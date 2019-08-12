@@ -85,6 +85,10 @@ class OrderList(APIView):
     def post(self, request, format=None):
         data = JSONParser().parse(request)
 
+        # Remove any scoops beyond the SCOOP_LIMIT
+        # Note - Django models don't store duplicates in ManyToManyFields
+        #  therefore, you can only have unique flavours in this simple ordering
+        #  implementation
         for order in data:
             if len(order['scoops']) > Order.SCOOP_LIMIT:
                 del order['scoops'][3:]
