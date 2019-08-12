@@ -1,0 +1,3 @@
+Install pipenv
+
+pipenv shell
