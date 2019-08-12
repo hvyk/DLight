@@ -15,7 +15,7 @@ urlpatterns = [
     path('containers', views.ContainerList.as_view()),
     path('containers/<int:pk>/', views.ContainerDetail.as_view()),
     path('orders', views.OrderList.as_view()),
-    # path('orders/<int:pk>/', views.OrderDetail.as_view()),
+    path('orders/<int:pk>/', views.OrderDetail.as_view()),
 
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
