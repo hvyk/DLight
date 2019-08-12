@@ -1,0 +1,567 @@
+{
+	"info": {
+		"_postman_id": "1dfb3d22-ffe3-4093-a1fa-0a4be5da1c0d",
+		"name": "Ice Cream",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Chocolate",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "db069e9b-c7f9-487c-aee8-3e867b396ccb",
+						"exec": [
+							"let resp = pm.response.json();",
+							"pm.environment.set('chocolatePk', resp[0].pk)",
+							"",
+							"",
+							"// example using pm.response.to.be*",
+							"pm.test(\"response must be valid and have a body\", function () {",
+							"     // assert that the status code is 200",
+							"     pm.response.to.not.be.error; // info, success, redirection, clientError,  serverError, are other variants",
+							"     // assert that the response has a valid JSON body",
+							"     pm.response.to.be.withBody;",
+							"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed",
+							"     pm.expect(pm.response.json().length).to.equal(1);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/javascript",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[{\n\t\"name\": \"chocolate\",\n\t\"price\": 1.99,\n\t\"stock\": 100\n}]"
+				},
+				"url": {
+					"raw": "{{url}}/flavours",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"flavours"
+					]
+				},
+				"description": "POST to flavours"
+			},
+			"response": []
+		},
+		{
+			"name": "Create Strawberry and Vanilla",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9018ff3c-6ba9-483b-a099-6201ca4ae5a0",
+						"exec": [
+							"let resp = pm.response.json();",
+							"pm.environment.set('strawberryPk', resp[0].pk)",
+							"pm.environment.set('vanillaPk', resp[1].pk)",
+							"",
+							"// example using pm.response.to.be*",
+							"pm.test(\"response must be valid and have a body\", function () {",
+							"     // assert that the status code is 200",
+							"     pm.response.to.not.be.error; // info, success, redirection, clientError,  serverError, are other variants",
+							"     // assert that the response has a valid JSON body",
+							"     pm.response.to.be.withBody;",
+							"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed",
+							"     pm.expect(pm.response.json().length).to.equal(2);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[{\n\t\"name\": \"strawberry\",\n\t\"price\": 1.99,\n\t\"stock\": 98\n},\n{\n\t\"name\": \"vanilla\",\n\t\"price\": 0.99,\n\t\"stock\": 200\n}]"
+				},
+				"url": {
+					"raw": "{{url}}/flavours",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"flavours"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Cherry and Blueberry and Peanut Butter",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9018ff3c-6ba9-483b-a099-6201ca4ae5a0",
+						"exec": [
+							"let resp = pm.response.json();",
+							"pm.environment.set('cherryPk', resp[0].pk)",
+							"pm.environment.set('blueberryPk', resp[1].pk)",
+							"pm.environment.set('peanutbutterPk', resp[2].pk)",
+							"",
+							"// example using pm.response.to.be*",
+							"pm.test(\"response must be valid and have a body\", function () {",
+							"     // assert that the status code is 200",
+							"     pm.response.to.not.be.error; // info, success, redirection, clientError,  serverError, are other variants",
+							"     // assert that the response has a valid JSON body",
+							"     pm.response.to.be.withBody;",
+							"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed",
+							"     pm.expect(pm.response.json().length).to.equal(3);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[{\n\t\"name\": \"cherry\",\n\t\"price\": 1.59,\n\t\"stock\": 98\n},\n{\n\t\"name\": \"blueberry\",\n\t\"price\": 2.99,\n\t\"stock\": 120\n},\n{\n\t\"name\": \"peanut butter\",\n\t\"price\": 1.19,\n\t\"stock\": 100\n}]"
+				},
+				"url": {
+					"raw": "{{url}}/flavours",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"flavours"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Flavours Stock",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "389e3caf-e17f-46e4-9534-f74188709823",
+						"exec": [
+							"// example using pm.response.to.be*",
+							"pm.test(\"response must be valid and have a body\", function () {",
+							"     // assert that the status code is 200",
+							"     pm.response.to.not.be.error; // info, success, redirection, clientError,  serverError, are other variants",
+							"     // assert that the response has a valid JSON body",
+							"     pm.response.to.be.withBody;",
+							"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed",
+							"     pm.expect(pm.response.json().length).to.equal(6);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/flavours",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"flavours"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Chocolate Flavour Stock",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "04b6f9d7-344a-44c1-96a7-16732a8d7f56",
+						"exec": [
+							"// example using pm.response.to.be*",
+							"pm.test(\"response must be valid and have a body\", function () {",
+							"     // assert that the status code is 200",
+							"     pm.response.to.not.be.error; // info, success, redirection, clientError,  serverError, are other variants",
+							"     // assert that the response has a valid JSON body",
+							"     pm.response.to.be.withBody;",
+							"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/flavours/{{chocolatePk}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"flavours",
+						"{{chocolatePk}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Strawberry Flavour Stock",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "9147934d-e69a-466d-8a51-ab633fa5ccb3",
+						"exec": [
+							"// example using pm.response.to.be*",
+							"pm.test(\"response must be valid and have a body\", function () {",
+							"     // assert that the status code is 200",
+							"     pm.response.to.not.be.error; // info, success, redirection, clientError,  serverError, are other variants",
+							"     // assert that the response has a valid JSON body",
+							"     pm.response.to.be.withBody;",
+							"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/flavours/{{strawberryPk}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"flavours",
+						"{{strawberryPk}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Vanilla Flavour Stock",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "97d37930-7ae6-4112-bffb-bf67ed20c5ee",
+						"exec": [
+							"// example using pm.response.to.be*",
+							"pm.test(\"response must be valid and have a body\", function () {",
+							"     // assert that the status code is 200",
+							"     pm.response.to.not.be.error; // info, success, redirection, clientError,  serverError, are other variants",
+							"     // assert that the response has a valid JSON body",
+							"     pm.response.to.be.withBody;",
+							"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/flavours/{{vanillaPk}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"flavours",
+						"{{vanillaPk}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Bowl and Cone",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3ff3dd69-71c7-4a93-8ab7-3606d5b6e1da",
+						"exec": [
+							"let resp = pm.response.json();",
+							"pm.environment.set('bowlPk', resp[0].pk)",
+							"pm.environment.set('conePk', resp[1].pk)",
+							"",
+							"// example using pm.response.to.be*",
+							"pm.test(\"response must be valid and have a body\", function () {",
+							"     // assert that the status code is 200",
+							"     pm.response.to.not.be.error; // info, success, redirection, clientError,  serverError, are other variants",
+							"     // assert that the response has a valid JSON body",
+							"     pm.response.to.be.withBody;",
+							"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed",
+							"     pm.expect(pm.response.json().length).to.equal(2);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/javascript",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[{\n\t\"name\": \"bowl\",\n\t\"stock\": 50\n},\n{\n\t\"name\": \"cone\",\n\t\"stock\": 50\n}]"
+				},
+				"url": {
+					"raw": "{{url}}/containers",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"containers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all Containers",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0501dcb6-bcc3-4017-be9e-6dfb263603e8",
+						"exec": [
+							"",
+							"// example using pm.response.to.be*",
+							"pm.test(\"response must be valid and have a body\", function () {",
+							"     // assert that the status code is 200",
+							"     pm.response.to.not.be.error; // info, success, redirection, clientError,  serverError, are other variants",
+							"     // assert that the response has a valid JSON body",
+							"     pm.response.to.be.withBody;",
+							"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed",
+							"     pm.expect(pm.response.json().length).to.equal(2);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{url}}/containers",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"containers"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Bowl Stock",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7cb351c4-d5b6-4c2a-a9ac-ff0ec50fec33",
+						"exec": [
+							"pm.test(\"response must be valid and have a body\", function () {",
+							"     // assert that the status code is 200",
+							"     pm.response.to.not.be.error; // info, success, redirection, clientError,  serverError, are other variants",
+							"     // assert that the response has a valid JSON body",
+							"     pm.response.to.be.withBody;",
+							"     pm.response.to.be.json; // this assertion also checks if a body  exists, so the above check is not needed",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{url}}/containers/{{bowlPk}}",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"containers",
+						"{{bowlPk}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Single Valid Order - Single Scoop",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[{\n\t\"container\": {{bowlPk}},\n\t\"scoops\": [ {{chocolatePk}} ]\n}]"
+				},
+				"url": {
+					"raw": "{{url}}/orders",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Single Invalid Order - Too Many Scoops",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[{\n\t\"container\": {{bowlPk}},\n\t\"scoops\": [ {{chocolatePk}}, {{strawberryPk}}, {{vanillaPk}}, {{cherryPk}}, {{blueberryPk}}, {{peanutbutterPk}} ]\n}]"
+				},
+				"url": {
+					"raw": "{{url}}/orders",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Multiple Valid Orders",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[{\n\t\"container\": {{bowlPk}},\n\t\"scoops\": [ {{chocolatePk}}, {{strawberryPk}} ]\n},\n{\n\t\"container\": {{conePk}},\n\t\"scoops\": [ {{cherryPk}}, {{blueberryPk}}, {{peanutbutterPk}} ]\n},\n{\n\t\"container\": {{conePk}},\n\t\"scoops\": [ {{strawberryPk}}, {{vanillaPk}}, {{cherryPk}} ]\n}]"
+				},
+				"url": {
+					"raw": "{{url}}/orders",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Multiple Valid Orders",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"name": "Content-Type",
+						"type": "text",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "[{\n\t\"container\": {{bowlPk}},\n\t\"scoops\": [ {{chocolatePk}}, {{strawberryPk}} ]\n},\n{\n\t\"container\": {{conePk}},\n\t\"scoops\": [ {{cherryPk}}, {{blueberryPk}}, {{peanutbutterPk}}, {{strawberryPk}}, {{vanillaPk}} ]\n},\n{\n\t\"container\": {{conePk}},\n\t\"scoops\": [ {{strawberryPk}}, {{vanillaPk}}, {{cherryPk}} ]\n}]"
+				},
+				"url": {
+					"raw": "{{url}}/orders",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"orders"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
